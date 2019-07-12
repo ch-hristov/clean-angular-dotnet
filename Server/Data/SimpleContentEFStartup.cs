@@ -18,7 +18,8 @@ namespace AspCoreServer.Data
             {
                 return; // DB has been seeded
             }
-            var users = new Estimate[] {
+
+            var est = new Estimate[] {
                 new Estimate () { ProjectName = "Mark Pieszak" },
                 new Estimate () { ProjectName = "Abrar Jahin" },
                 new Estimate () { ProjectName = "hakonamatata" },
@@ -32,7 +33,16 @@ namespace AspCoreServer.Data
                 new Estimate () { ProjectName = "Gaulomatic" },
                 new Estimate () { ProjectName = "GRIMMR3AP3R" }
             };
-            await context.Estimates.AddRangeAsync(users);
+
+
+            for (var i = 0; i < est.Length; i++)
+            {
+                est[i].UsedHours = i;
+                est[i].TotalHours = i + 10;
+                est[i].BilledHours = i;
+            }
+
+            await context.Estimates.AddRangeAsync(est);
 
             await context.SaveChangesAsync();
         }

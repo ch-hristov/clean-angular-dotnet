@@ -18,5 +18,11 @@ namespace Asp2017.Server.Models
 
         //Setting Default value
         public Estimate() => this.EntryTime = DateTime.Now;
+
+
+        public int TotalHours { get; set; }
+        public int UsedHours { get; set; }
+
+        public int BilledHours { get; set; }
     }
 }
