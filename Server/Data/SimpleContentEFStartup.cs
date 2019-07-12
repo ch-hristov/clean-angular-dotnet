@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Asp2017.Server.Models;
 using AspCoreServer.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,25 +14,25 @@ namespace AspCoreServer.Data
             var context = services.GetRequiredService<SpaDbContext>();
 
 
-            if (await context.User.AnyAsync())
+            if (await context.Estimates.AnyAsync())
             {
                 return; // DB has been seeded
             }
-            var users = new User[] {
-                new User () { Name = "Mark Pieszak" },
-                new User () { Name = "Abrar Jahin" },
-                new User () { Name = "hakonamatata" },
-                new User () { Name = "LiverpoolOwen" },
-                new User () { Name = "Ketrex" },
-                new User () { Name = "markwhitfeld" },
-                new User () { Name = "daveo1001" },
-                new User () { Name = "paonath" },
-                new User () { Name = "nalex095" },
-                new User () { Name = "ORuban" },
-                new User () { Name = "Gaulomatic" },
-                new User () { Name = "GRIMMR3AP3R" }
+            var users = new Estimate[] {
+                new Estimate () { ProjectName = "Mark Pieszak" },
+                new Estimate () { ProjectName = "Abrar Jahin" },
+                new Estimate () { ProjectName = "hakonamatata" },
+                new Estimate () { ProjectName = "LiverpoolOwen" },
+                new Estimate () { ProjectName = "Ketrex" },
+                new Estimate () { ProjectName = "markwhitfeld" },
+                new Estimate () { ProjectName = "daveo1001" },
+                new Estimate () { ProjectName = "paonath" },
+                new Estimate () { ProjectName = "nalex095" },
+                new Estimate () { ProjectName = "ORuban" },
+                new Estimate () { ProjectName = "Gaulomatic" },
+                new Estimate () { ProjectName = "GRIMMR3AP3R" }
             };
-            await context.User.AddRangeAsync(users);
+            await context.Estimates.AddRangeAsync(users);
 
             await context.SaveChangesAsync();
         }

@@ -1,4 +1,8 @@
 ﻿<h1>{{title}}</h1>
 <h2 style="width:200vh"></h2>
-<slideshow [autoPlay]="true"
-           [showArrows]="false" [imageUrls]="urls"></slideshow>
+<!-- <slideshow [autoPlay]="true"
+           [showArrows]="false" [imageUrls]="urls"></slideshow> -->
+
+<div *ngFor="let el of render">
+    {{el}}
+</div>
